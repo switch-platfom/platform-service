@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+    <diskStore path="java.io.tmpdir"/>
+    <!-- maxEntriesLocalHeap : 最大缓存数 -->
+    <!-- eternal : 对象是否永久有效 -->
+    <!-- timeToIdleSeconds : 当缓存闲置n秒后销毁 -->
+    <!-- timeToLiveSeconds : 当缓存存活n秒后销毁 -->
+    <!-- overflowToDisk : 当内存中对象数量达到maxElementsInMemory时，Ehcache将会对象写到磁盘中。  -->
+    <!-- diskSpoolBufferSizeMB : 这个参数设置DiskStore（磁盘缓存）的缓存区大小。默认是30MB。 -->
+    <!-- maxElementsOnDisk : maxElementsOnDisk：硬盘最大缓存个数。  -->
+    <!-- diskPersistent : 是否缓存虚拟机重启期数据  -->
+    <!-- diskExpiryThreadIntervalSeconds : 磁盘失效线程运行时间间隔，默认是120秒。  -->
+    <!-- memoryStoreEvictionPolicy : 当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存,默认策略是LRU（最近最少使用）  -->
+    <defaultCache
+            maxEntriesLocalHeap="2000"
+            eternal="false"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="300"
+            diskSpoolBufferSizeMB="30"
+            maxEntriesLocalDisk="10000"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU">
+    </defaultCache>
+
+</ehcache>
