@@ -1,14 +1,10 @@
 package com.hotel.platform.business.impl.sender;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.hotel.platform.business.core.context.CancelOrderContext;
 import com.hotel.platform.business.core.sender.AbstractRestAdapterSender;
 import com.hotel.platform.business.core.sender.SendSupplierType;
 import com.hotel.platform.business.core.sender.SenderType;
 import com.hotel.platform.business.core.sender.SenderVendor;
-import com.hotel.platform.common.constans.LogAppend;
 import com.hotel.platform.contract.cota.OTACancelRQ;
 import com.hotel.platform.contract.cota.OTACancelRS;
 
@@ -20,7 +16,7 @@ import com.hotel.platform.contract.cota.OTACancelRS;
  */
 @SendSupplierType(version = SenderVendor.HAOQIAO, type = SenderType.CANCEL_ORDER)
 public class HaoQiaoCancelOrderSender extends AbstractRestAdapterSender<OTACancelRQ, OTACancelRS, CancelOrderContext> {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LogAppend.DEBUG);
+
 
     @Override
     public OTACancelRS sendRequest(OTACancelRQ request, CancelOrderContext context) {

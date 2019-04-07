@@ -34,13 +34,12 @@ import org.apache.http.nio.reactor.ConnectingIOReactor;
 import org.apache.http.nio.reactor.IOReactorException;
 import org.apache.http.ssl.SSLContexts;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.hotel.platform.common.constans.LogAppend;
+import com.hotel.platform.common.utils.LogUtil;
 import com.hotel.platform.common.utils.StringUtil;
 
 public final class HttpAsyncClientComponent {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LogAppend.UTILS);
+    private static Logger LOGGER = LogUtil.getLogger(HttpAsyncClientComponent.class);
     private static final String[] TLS_PROTOCOLS = new String[] {"TLSv1", "TLSv1.1", "TLSv1.2", "SSLv3"};
 
     private static final Object CREATE_CONNECTION_LOCK = new Object();
@@ -230,7 +229,7 @@ public final class HttpAsyncClientComponent {
                 try {
                     srStore.close();
                 } catch (IOException e) {
-                    LOGGER.error("getSslIoSessionStrategy",e);
+                    LOGGER.error("getSslIoSessionStrategy", e);
                 }
             }
         }

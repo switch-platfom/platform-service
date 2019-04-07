@@ -18,12 +18,9 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.hotel.platform.common.constans.LogAppend;
 
 public class JaxbFactory {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LogAppend.UTILS);
+    private static Logger LOGGER = LogUtil.getLogger(JaxbFactory.class);
     private final static Object LOCK_OBJECT = new Object();
     private static Map<String, JAXBContext> jaxbContextMap;
 

@@ -2,17 +2,15 @@ package com.hotel.platform.common.utils;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.slf4j.Logger;
 
 import com.dyuproject.protostuff.LinkedBuffer;
 import com.dyuproject.protostuff.ProtobufIOUtil;
 import com.dyuproject.protostuff.Schema;
 import com.dyuproject.protostuff.runtime.RuntimeSchema;
-import com.hotel.platform.common.constans.LogAppend;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public final class ProtoBufFactory {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LogAppend.UTILS);
+    private static Logger LOGGER = LogUtil.getLogger(ProtoBufFactory.class);
     private static ConcurrentHashMap<String, Object> schemaConcurrentMap = null;
 
     public static ProtoBufFactory getInstance() {

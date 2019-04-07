@@ -11,31 +11,6 @@
     <packaging>jar</packaging>
     <artifactId>platform-business</artifactId>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.hotel.platform</groupId>
-                <artifactId>platform-dao</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.hotel.platform</groupId>
-                <artifactId>platform-common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.hotel.platform</groupId>
-                <artifactId>platform-entity</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.hotel.platform</groupId>
-                <artifactId>platform-contract</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>com.hotel.platform</groupId>

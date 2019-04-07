@@ -11,16 +11,6 @@
     <packaging>jar</packaging>
     <artifactId>platform-dao</artifactId>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.hotel.platform</groupId>
-                <artifactId>platform-entity</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <!-- platform module -->
         <dependency>

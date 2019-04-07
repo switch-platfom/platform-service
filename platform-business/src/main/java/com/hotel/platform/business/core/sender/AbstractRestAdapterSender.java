@@ -7,17 +7,17 @@ import java.util.function.Function;
 
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSON;
 import com.hotel.platform.business.core.context.BaseContext;
 import com.hotel.platform.business.core.exceptions.BizException;
-import com.hotel.platform.common.constans.LogAppend;
 import com.hotel.platform.common.httpclient.AsyncHttpClientUtil;
 import com.hotel.platform.common.httpclient.HttpConstant;
 import com.hotel.platform.common.httpclient.HttpRequest;
 import com.hotel.platform.common.httpclient.HttpResponse;
 import com.hotel.platform.common.httpclient.base.HttpResponseFuture;
 import com.hotel.platform.common.model.WebResponse;
+import com.hotel.platform.common.utils.LogUtil;
 import com.hotel.platform.common.utils.StringUtil;
 
 /**
@@ -28,7 +28,7 @@ import com.hotel.platform.common.utils.StringUtil;
  */
 public abstract class AbstractRestAdapterSender<RQ, RS, CONTEXT extends BaseContext>
         implements BaseAdapterSender<RQ, RS, CONTEXT> {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LogAppend.DEBUG);
+    private final static Logger LOGGER = LogUtil.getLogger(AbstractRestAdapterSender.class);
 
     /**
      * 获取握手超时时间
@@ -140,9 +140,9 @@ public abstract class AbstractRestAdapterSender<RQ, RS, CONTEXT extends BaseCont
             if (webResponse != null && webResponse.getHttpResCode().equals(200)) {
                 response = getResponse(request, webResponse.getResponseBody(), context);
             } else if (webResponse != null && webResponse.getResponseException() != null) {
-                LOGGER.warn("request exception:", webResponse.getResponseException(), context.getLogTag());
+                LOGGER.warn("向适配器发送请求失败:" + JSON.toJSONString(context.getLogTag()), webResponse.getResponseException());
             } else {
-                LOGGER.warn("request exception:", "向适配器发送请求失败", context.getLogTag());
+                LOGGER.warn("向适配器发送请求失败:" + JSON.toJSONString(context.getLogTag()));
             }
         } catch (Exception e) {
             throw new BizException("接口调用失败", context.getLogTag());

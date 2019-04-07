@@ -6,18 +6,17 @@ import org.apache.http.client.entity.DeflateDecompressingEntity;
 import org.apache.http.client.entity.GzipDecompressingEntity;
 import org.apache.http.concurrent.FutureCallback;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
-import com.hotel.platform.common.constans.LogAppend;
 import com.hotel.platform.common.httpclient.HttpRequest;
 import com.hotel.platform.common.httpclient.HttpResponse;
+import com.hotel.platform.common.utils.LogUtil;
 
 /**
  * Created by wmo on 2018/7/19.
  */
 public class HttpRequestCallBack<T, V> implements FutureCallback<org.apache.http.HttpResponse> {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LogAppend.UTILS);
+    private static Logger LOGGER = LogUtil.getLogger(HttpRequestCallBack.class);
 
     private BaseDataProcess<T> baseDataProcess;
     private HttpRequest<T> httpRequest;
@@ -25,7 +24,7 @@ public class HttpRequestCallBack<T, V> implements FutureCallback<org.apache.http
     private HttpResponseFuture<V> responseFuture;
 
     public HttpRequestCallBack(BaseDataProcess<T> baseDataProcess, HttpRequest<T> httpRequest, long starTime,
-                               HttpResponseFuture<V> requestFuture) {
+            HttpResponseFuture<V> requestFuture) {
         this.baseDataProcess = baseDataProcess;
         this.httpRequest = httpRequest;
         this.start = starTime;

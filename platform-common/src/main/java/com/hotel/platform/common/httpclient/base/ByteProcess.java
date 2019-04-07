@@ -7,14 +7,12 @@ import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ByteArrayEntity;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.hotel.platform.common.constans.LogAppend;
 import com.hotel.platform.common.httpclient.HttpResponse;
+import com.hotel.platform.common.utils.LogUtil;
 
 public class ByteProcess implements BaseDataProcess<byte[]> {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LogAppend.UTILS);
-
+    private static Logger LOGGER = LogUtil.getLogger(ByteProcess.class);
 
     @Override
     public void setRequestContent(RequestBuilder requestBuilder, byte[] requestContent) {
@@ -37,13 +35,13 @@ public class ByteProcess implements BaseDataProcess<byte[]> {
                 }
                 response.setResponseBytes(bos.toByteArray());
             } catch (IOException e) {
-                LOGGER.error("setResponseContent",e);
+                LOGGER.error("setResponseContent", e);
             } finally {
                 try {
                     bos.flush();
                     bos.close();
                 } catch (IOException e) {
-                    LOGGER.error("setResponseContent",e);
+                    LOGGER.error("setResponseContent", e);
                 }
             }
         }

@@ -1,14 +1,10 @@
 package com.hotel.platform.business.impl.sender;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.hotel.platform.business.core.context.HotelAvailContext;
 import com.hotel.platform.business.core.sender.AbstractRestAdapterSender;
 import com.hotel.platform.business.core.sender.SendSupplierType;
 import com.hotel.platform.business.core.sender.SenderType;
 import com.hotel.platform.business.core.sender.SenderVendor;
-import com.hotel.platform.common.constans.LogAppend;
 import com.hotel.platform.contract.cota.OTAHotelAvailRQ;
 import com.hotel.platform.contract.cota.OTAHotelAvailRS;
 
@@ -21,7 +17,6 @@ import com.hotel.platform.contract.cota.OTAHotelAvailRS;
 @SendSupplierType(version = SenderVendor.HAOQIAO, type = SenderType.CANCEL_ORDER)
 public class HaoQiaoHotelAvailSender
         extends AbstractRestAdapterSender<OTAHotelAvailRQ, OTAHotelAvailRS, HotelAvailContext> {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LogAppend.DEBUG);
 
     @Override
     public OTAHotelAvailRS sendRequest(OTAHotelAvailRQ request, HotelAvailContext context) {

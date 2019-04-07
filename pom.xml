@@ -39,7 +39,6 @@
         <protostuff.version>1.0.12</protostuff.version>
         <google.protobuf.veriosn>3.2.0</google.protobuf.veriosn>
 
-        <log4j.version>1.7.25</log4j.version>
         <logback.version>1.2.3</logback.version>
     </properties>
 
@@ -53,6 +52,33 @@
                 <version>${springboot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- platform module -->
+            <dependency>
+                <groupId>com.hotel.platform</groupId>
+                <artifactId>platform-dao</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hotel.platform</groupId>
+                <artifactId>platform-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hotel.platform</groupId>
+                <artifactId>platform-entity</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hotel.platform</groupId>
+                <artifactId>platform-contract</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hotel.platform</groupId>
+                <artifactId>platform-business</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <!-- MySQL Driver -->
@@ -156,17 +182,16 @@
                 <version>${fastjosn.version}</version>
             </dependency>
 
-            <!-- log4j -->
+            <!-- log back -->
             <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${log4j.version}</version>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-log4j12</artifactId>
-                <scope>test</scope>
-                <version>${log4j.version}</version>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
             </dependency>
 
             <!-- protobuf -->

@@ -12,19 +12,19 @@ import org.apache.http.nio.client.methods.HttpAsyncMethods;
 import org.apache.http.nio.protocol.BasicAsyncResponseConsumer;
 import org.apache.http.nio.protocol.HttpAsyncRequestProducer;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
-import com.hotel.platform.common.constans.LogAppend;
 import com.hotel.platform.common.httpclient.HttpConstant;
 import com.hotel.platform.common.httpclient.HttpRequest;
 import com.hotel.platform.common.httpclient.HttpResponse;
 import com.hotel.platform.common.httpclient.commpent.HttpAsyncClientComponent;
+import com.hotel.platform.common.utils.LogUtil;
 import com.hotel.platform.common.utils.NumberUtil;
 import com.hotel.platform.common.utils.StringUtil;
 
+
 public class AsyncHttpClient {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LogAppend.UTILS);
+    private static Logger LOGGER = LogUtil.getLogger(AsyncHttpClient.class);
 
 
     /**
