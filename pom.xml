@@ -14,6 +14,7 @@
         <module>platform-dao</module>
         <module>platform-entity</module>
         <module>platform-contract</module>
+        <module>platform-job</module>
     </modules>
     <packaging>pom</packaging>
     <name>platform</name>
@@ -40,6 +41,9 @@
         <google.protobuf.veriosn>3.2.0</google.protobuf.veriosn>
 
         <logback.version>1.2.3</logback.version>
+
+        <quartz.version>2.3.0</quartz.version>
+        <quartz.spring.version>2.1.1.RELEASE</quartz.spring.version>
     </properties>
 
     <dependencyManagement>
@@ -209,6 +213,18 @@
                 <groupId>com.google.protobuf</groupId>
                 <artifactId>protobuf-java</artifactId>
                 <version>${google.protobuf.veriosn}</version>
+            </dependency>
+
+            <!-- quartz -->
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>${quartz.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-quartz</artifactId>
+                <version>${quartz.spring.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
