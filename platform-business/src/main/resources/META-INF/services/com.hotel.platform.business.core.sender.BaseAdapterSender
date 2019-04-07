@@ -1,0 +1,3 @@
+com.hotel.platform.business.impl.sender.HaoQiaoCancelOrderSender
+com.hotel.platform.business.impl.sender.HaoQiaoHotelAvailSender
+com.hotel.platform.business.impl.sender.HaoQiaoNewOrderSender
