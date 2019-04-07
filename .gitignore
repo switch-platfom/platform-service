@@ -1,0 +1,37 @@
+# maven ignore
+target/
+*.jar
+*.war
+*.zip
+*.tar
+*.tar.gz
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+bin/
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+*.java~
+*.properties~
+*.com.ctrip.hotel.vendor.common.dao.mysql.htlovsariconnectiondb.xml~
+
+# system ignore
+.DS_Store
+Thumbs.db
+
+logs/
+
+*.versionsBackup
