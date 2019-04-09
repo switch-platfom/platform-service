@@ -1,5 +1,7 @@
 package com.hotel.platform.business.impl.handler;
 
+import org.springframework.stereotype.Service;
+
 import com.hotel.platform.business.core.context.SendOrderContext;
 import com.hotel.platform.business.core.exceptions.BizException;
 import com.hotel.platform.business.core.exceptions.SystemException;
@@ -10,6 +12,7 @@ import com.hotel.platform.contract.cota.OTAHotelResRQ;
 /**
  * Created by mowei on 2019/4/7.
  */
+@Service
 public class SendOrderHandler extends AbstractOrderHandler<OTAHotelResRQ, HotelResResponseType, SendOrderContext> {
     @Override
     public void logDb(OTAHotelResRQ request, HotelResResponseType response, SendOrderContext context) {
