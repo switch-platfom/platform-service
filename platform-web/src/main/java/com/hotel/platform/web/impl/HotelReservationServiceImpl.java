@@ -2,9 +2,6 @@ package com.hotel.platform.web.impl;
 
 import javax.jws.WebService;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 import com.alibaba.fastjson.JSON;
 import com.hotel.platform.business.core.handler.BaseSwitchHandler;
 import com.hotel.platform.common.log.LogFactory;
@@ -17,23 +14,14 @@ import com.hotel.platform.contract.cota.OTAHotelAvailRS;
 import com.hotel.platform.contract.cota.OTAHotelResRQ;
 import com.hotel.platform.dao.mapper.UserInfoMapper;
 import com.hotel.platform.web.service.HotelReservationService;
-import org.springframework.stereotype.Controller;
 
 /**
  * Created by mowei on 2019/4/9.
  */
-@Controller
 @WebService(endpointInterface = "com.hotel.platform.web.service.HotelReservationService",
         serviceName = "hotelReservationService")
 public class HotelReservationServiceImpl implements HotelReservationService {
     private final LogFactory.Log LOGGER = LogFactory.getInstance().getLogger(HotelReservationServiceImpl.class);
-
-    @Autowired
-    @Qualifier("sendOrderHandler")
-    private BaseSwitchHandler<OTAHotelResRQ, HotelResResponseType> sendOrderHandler;
-    @Autowired
-    @Qualifier("cancelOrderHandler")
-    private BaseSwitchHandler<OTACancelRQ, OTACancelRS> cancelOrderHandler;
 
     @Override
     public OTAHotelAvailRS hotelAvail(OTAHotelAvailRQ request) {
@@ -50,11 +38,15 @@ public class HotelReservationServiceImpl implements HotelReservationService {
 
     @Override
     public OTACancelRS cancelOrder(OTACancelRQ request) {
+        BaseSwitchHandler<OTACancelRQ, OTACancelRS> cancelOrderHandler =
+                (BaseSwitchHandler<OTACancelRQ, OTACancelRS>) SpringBeanContext.getBean("cancelOrderHandler");
         return cancelOrderHandler.process(request);
     }
 
     @Override
     public HotelResResponseType newOrder(OTAHotelResRQ request) {
+        BaseSwitchHandler<OTAHotelResRQ, HotelResResponseType> sendOrderHandler =
+                (BaseSwitchHandler<OTAHotelResRQ, HotelResResponseType>) SpringBeanContext.getBean("sendOrderHandler");
         return sendOrderHandler.process(request);
     }
 }

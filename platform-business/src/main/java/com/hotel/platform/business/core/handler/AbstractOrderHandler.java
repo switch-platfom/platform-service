@@ -46,9 +46,7 @@ public abstract class AbstractOrderHandler<RQ, RS, CONTEXT extends BaseContext>
             otherExceptionHandler(request, response, context, e);
         } finally {
             long cost = (System.currentTimeMillis() - startTime);
-            logDb(request, response, context);
-            logEs(request, response, context, cost);
-            logMetric(request, response, context, cost);
+            log(request, response, context, cost);
         }
         return response;
     }

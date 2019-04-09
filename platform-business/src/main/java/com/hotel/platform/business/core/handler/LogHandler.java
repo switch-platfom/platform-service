@@ -16,26 +16,7 @@ public interface LogHandler<RQ, RS, CONTEXT extends BaseContext> {
      * @param request
      * @param response
      * @param context
-     */
-    void logDb(RQ request, RS response, CONTEXT context);
-
-    /**
-     * 记录请求到es
-     *
-     * @param request
-     * @param response
-     * @param context
      * @param cost
      */
-    void logEs(RQ request, RS response, CONTEXT context, long cost);
-
-    /**
-     * metric
-     * 
-     * @param request
-     * @param response
-     * @param context
-     * @param cost
-     */
-    void logMetric(RQ request, RS response, CONTEXT context, long cost);
+    void log(RQ request, RS response, CONTEXT context,long cost);
 }

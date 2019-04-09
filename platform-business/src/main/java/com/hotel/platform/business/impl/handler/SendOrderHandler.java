@@ -14,18 +14,9 @@ import com.hotel.platform.contract.cota.OTAHotelResRQ;
  */
 @Service
 public class SendOrderHandler extends AbstractOrderHandler<OTAHotelResRQ, HotelResResponseType, SendOrderContext> {
-    @Override
-    public void logDb(OTAHotelResRQ request, HotelResResponseType response, SendOrderContext context) {
-
-    }
 
     @Override
-    public void logEs(OTAHotelResRQ request, HotelResResponseType response, SendOrderContext context, long cost) {
-
-    }
-
-    @Override
-    public void logMetric(OTAHotelResRQ request, HotelResResponseType response, SendOrderContext context, long cost) {
+    public void log(OTAHotelResRQ request, HotelResResponseType response, SendOrderContext context, long cost) {
 
     }
 
