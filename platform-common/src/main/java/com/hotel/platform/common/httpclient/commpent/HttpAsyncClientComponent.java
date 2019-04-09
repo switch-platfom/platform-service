@@ -33,13 +33,12 @@ import org.apache.http.nio.conn.ssl.SSLIOSessionStrategy;
 import org.apache.http.nio.reactor.ConnectingIOReactor;
 import org.apache.http.nio.reactor.IOReactorException;
 import org.apache.http.ssl.SSLContexts;
-import org.slf4j.Logger;
 
-import com.hotel.platform.common.utils.LogUtil;
+import com.hotel.platform.common.log.LogFactory;
 import com.hotel.platform.common.utils.StringUtil;
 
 public final class HttpAsyncClientComponent {
-    private static Logger LOGGER = LogUtil.getLogger(HttpAsyncClientComponent.class);
+    private static LogFactory.Log LOGGER = LogFactory.getInstance().getLogger(HttpAsyncClientComponent.class);
     private static final String[] TLS_PROTOCOLS = new String[] {"TLSv1", "TLSv1.1", "TLSv1.2", "SSLv3"};
 
     private static final Object CREATE_CONNECTION_LOCK = new Object();
@@ -117,7 +116,7 @@ public final class HttpAsyncClientComponent {
                 }
             }
         } catch (Exception e) {
-            LOGGER.error("create httpclient exception", e);
+            LOGGER.logError("create httpclient exception", e);
         }
         return asyncHttpClient;
     }
@@ -149,7 +148,7 @@ public final class HttpAsyncClientComponent {
         try {
             ioReactor = new DefaultConnectingIOReactor(ioReactorConfig);
         } catch (IOReactorException e) {
-            LOGGER.error("create io reactor", e);
+            LOGGER.logError("create io reactor", e);
         }
 
         PoolingNHttpClientConnectionManager connManager =
@@ -223,13 +222,13 @@ public final class HttpAsyncClientComponent {
                 sslIoSessionStrategy = new SSLIOSessionStrategy(sslcontext);
             }
         } catch (Exception e) {
-            LOGGER.error("getSslIoSessionStrategy", e);
+            LOGGER.logError("getSslIoSessionStrategy", e);
         } finally {
             if (srStore != null) {
                 try {
                     srStore.close();
                 } catch (IOException e) {
-                    LOGGER.error("getSslIoSessionStrategy", e);
+                    LOGGER.logError("getSslIoSessionStrategy", e);
                 }
             }
         }

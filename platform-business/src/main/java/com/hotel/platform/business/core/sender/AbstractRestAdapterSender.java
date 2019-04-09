@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 import org.joda.time.DateTime;
-import org.slf4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.hotel.platform.business.core.context.BaseContext;
@@ -16,8 +15,8 @@ import com.hotel.platform.common.httpclient.HttpConstant;
 import com.hotel.platform.common.httpclient.HttpRequest;
 import com.hotel.platform.common.httpclient.HttpResponse;
 import com.hotel.platform.common.httpclient.base.HttpResponseFuture;
+import com.hotel.platform.common.log.LogFactory;
 import com.hotel.platform.common.model.WebResponse;
-import com.hotel.platform.common.utils.LogUtil;
 import com.hotel.platform.common.utils.StringUtil;
 
 /**
@@ -28,7 +27,7 @@ import com.hotel.platform.common.utils.StringUtil;
  */
 public abstract class AbstractRestAdapterSender<RQ, RS, CONTEXT extends BaseContext>
         implements BaseAdapterSender<RQ, RS, CONTEXT> {
-    private final static Logger LOGGER = LogUtil.getLogger(AbstractRestAdapterSender.class);
+    private final static LogFactory.Log LOGGER = LogFactory.getInstance().getLogger(AbstractRestAdapterSender.class);
 
     /**
      * 获取握手超时时间
@@ -140,9 +139,9 @@ public abstract class AbstractRestAdapterSender<RQ, RS, CONTEXT extends BaseCont
             if (webResponse != null && webResponse.getHttpResCode().equals(200)) {
                 response = getResponse(request, webResponse.getResponseBody(), context);
             } else if (webResponse != null && webResponse.getResponseException() != null) {
-                LOGGER.warn("向适配器发送请求失败:" + JSON.toJSONString(context.getLogTag()), webResponse.getResponseException());
+                LOGGER.logError("向适配器发送请求失败", webResponse.getResponseException(),context.getLogTag());
             } else {
-                LOGGER.warn("向适配器发送请求失败:" + JSON.toJSONString(context.getLogTag()));
+                LOGGER.logError("向适配器发送请求失败",context.getLogTag());
             }
         } catch (Exception e) {
             throw new BizException("接口调用失败", context.getLogTag());

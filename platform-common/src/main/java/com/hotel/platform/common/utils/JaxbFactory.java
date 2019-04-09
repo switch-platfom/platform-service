@@ -17,10 +17,10 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import org.slf4j.Logger;
+import com.hotel.platform.common.log.LogFactory;
 
 public class JaxbFactory {
-    private static Logger LOGGER = LogUtil.getLogger(JaxbFactory.class);
+    private static LogFactory.Log LOGGER = LogFactory.getInstance().getLogger(JaxbFactory.class);
     private final static Object LOCK_OBJECT = new Object();
     private static Map<String, JAXBContext> jaxbContextMap;
 
@@ -58,7 +58,7 @@ public class JaxbFactory {
                     classes.add(clazz);
                 }
             } catch (Exception ex) {
-                LOGGER.error("init exception", ex);
+                LOGGER.logError("init exception", ex);
             }
         }
         Class<?>[] arrayClass = new Class[classes.size()];

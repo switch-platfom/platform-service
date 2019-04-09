@@ -22,7 +22,9 @@
     <properties>
         <springboot.version>1.5.10.RELEASE</springboot.version>
 
-        <javax.servlet.version>3.1.0</javax.servlet.version>
+        <spring.cxf.version>3.1.12</spring.cxf.version>
+        <cxf.frontend.version>3.0.12</cxf.frontend.version>
+
         <ehcache.version>2.10.0</ehcache.version>
         <ehcahce.annotations.version>1.1.2</ehcahce.annotations.version>
         <joda.version>2.3</joda.version>
@@ -56,6 +58,18 @@
                 <version>${springboot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!--apache cxf -->
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-spring-boot-starter-jaxws</artifactId>
+                <version>${spring.cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+                <version>${cxf.frontend.version}</version>
             </dependency>
 
             <!-- platform module -->
@@ -102,14 +116,6 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
-            </dependency>
-
-            <!-- sevelet -->
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>${javax.servlet.version}</version>
-                <scope>provided</scope>
             </dependency>
 
             <!-- ehcache -->

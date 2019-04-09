@@ -5,18 +5,16 @@ import org.apache.http.HttpEntity;
 import org.apache.http.client.entity.DeflateDecompressingEntity;
 import org.apache.http.client.entity.GzipDecompressingEntity;
 import org.apache.http.concurrent.FutureCallback;
-import org.slf4j.Logger;
 
-import com.alibaba.fastjson.JSON;
 import com.hotel.platform.common.httpclient.HttpRequest;
 import com.hotel.platform.common.httpclient.HttpResponse;
-import com.hotel.platform.common.utils.LogUtil;
+import com.hotel.platform.common.log.LogFactory;
 
 /**
  * Created by wmo on 2018/7/19.
  */
 public class HttpRequestCallBack<T, V> implements FutureCallback<org.apache.http.HttpResponse> {
-    private static Logger LOGGER = LogUtil.getLogger(HttpRequestCallBack.class);
+    private static LogFactory.Log LOGGER = LogFactory.getInstance().getLogger(HttpRequestCallBack.class);
 
     private BaseDataProcess<T> baseDataProcess;
     private HttpRequest<T> httpRequest;
@@ -41,21 +39,21 @@ public class HttpRequestCallBack<T, V> implements FutureCallback<org.apache.http
             responseFuture.completed(response);
         } catch (Exception e) {
             responseFuture.failed(getExceptionResponse(e, cost));
-            LOGGER.warn("http异步执行异常" + JSON.toJSONString(httpRequest.getTag()), e);
+            LOGGER.logError("http异步执行异常", e, httpRequest.getTag());
         }
     }
 
     @Override
     public void failed(Exception ex) {
         long cost = System.currentTimeMillis() - start;
-        LOGGER.warn("http异步处理失败,cost:" + String.valueOf(cost) + "," + JSON.toJSONString(httpRequest.getTag()));
+        LOGGER.logError("http异步处理失败,cost:" + String.valueOf(cost), httpRequest.getTag());
         responseFuture.failed(getExceptionResponse(ex, cost));
     }
 
     @Override
     public void cancelled() {
         long cost = System.currentTimeMillis() - start;
-        LOGGER.warn("http请求被取消,cost:" + String.valueOf(cost) + "," + JSON.toJSONString(httpRequest.getTag()));
+        LOGGER.logError("http请求被取消,cost:" + String.valueOf(cost), httpRequest.getTag());
         responseFuture
                 .cancel(getExceptionResponse(new HttpCancelRequestException("http请求被取消", httpRequest.getTag()), cost));
     }
@@ -105,8 +103,7 @@ public class HttpRequestCallBack<T, V> implements FutureCallback<org.apache.http
                 httpResponse.setResponseString("");
             }
         } catch (Exception ex) {
-            LOGGER.warn("读取远程数据超时:" + String.valueOf(System.currentTimeMillis() - start));
-            LOGGER.warn("process http response exception:" + JSON.toJSONString(httpRequest.getTag()), ex);
+            LOGGER.logError("process http response exception", ex, httpRequest.getTag());
             httpResponse.setHttpCode(-1);
             httpResponse.setResponseException(ex);
         }

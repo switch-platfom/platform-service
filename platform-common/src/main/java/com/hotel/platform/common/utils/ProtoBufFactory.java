@@ -2,15 +2,14 @@ package com.hotel.platform.common.utils;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.slf4j.Logger;
-
 import com.dyuproject.protostuff.LinkedBuffer;
 import com.dyuproject.protostuff.ProtobufIOUtil;
 import com.dyuproject.protostuff.Schema;
 import com.dyuproject.protostuff.runtime.RuntimeSchema;
+import com.hotel.platform.common.log.LogFactory;
 
 public final class ProtoBufFactory {
-    private static Logger LOGGER = LogUtil.getLogger(ProtoBufFactory.class);
+    private static LogFactory.Log LOGGER = LogFactory.getInstance().getLogger(ProtoBufFactory.class);
     private static ConcurrentHashMap<String, Object> schemaConcurrentMap = null;
 
     public static ProtoBufFactory getInstance() {
@@ -52,7 +51,7 @@ public final class ProtoBufFactory {
             byte[] data = ProtobufIOUtil.toByteArray(t, schema, buffer);
             return data;
         } catch (Exception ex) {
-            LOGGER.error("protoBufSerialize exception", ex);
+            LOGGER.logError("protoBufSerialize exception", ex);
             return null;
         }
     }
@@ -81,10 +80,7 @@ public final class ProtoBufFactory {
             ProtobufIOUtil.mergeFrom(data, v, schema);
             return v;
         } catch (InstantiationException | IllegalAccessException e) {
-            StringBuilder sb = new StringBuilder(200);
-            sb.append("protoBufDeserialize data to ").append(messageClass.getName()).append("convert error:\n\t")
-                    .append(e.getMessage());
-            LOGGER.error("protoBufDeserialize exception，" + sb.toString());
+            LOGGER.logError("protoBufDeserialize exception", e);
         }
         return null;
     }

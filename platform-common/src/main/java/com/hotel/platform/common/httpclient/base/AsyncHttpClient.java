@@ -18,13 +18,13 @@ import com.hotel.platform.common.httpclient.HttpConstant;
 import com.hotel.platform.common.httpclient.HttpRequest;
 import com.hotel.platform.common.httpclient.HttpResponse;
 import com.hotel.platform.common.httpclient.commpent.HttpAsyncClientComponent;
-import com.hotel.platform.common.utils.LogUtil;
+import com.hotel.platform.common.log.LogFactory;
 import com.hotel.platform.common.utils.NumberUtil;
 import com.hotel.platform.common.utils.StringUtil;
 
 
 public class AsyncHttpClient {
-    private static Logger LOGGER = LogUtil.getLogger(AsyncHttpClient.class);
+    private static LogFactory.Log LOGGER = LogFactory.getInstance().getLogger(AsyncHttpClient.class);
 
 
     /**
@@ -58,7 +58,7 @@ public class AsyncHttpClient {
                     new HttpRequestCallBack<>(baseDataProcess, httpRequest, start, responseFuture);
             asyncHttpClient.execute(producer, consumer, requestCallBack);
         } catch (Exception e) {
-            LOGGER.warn("processRequest," + JSON.toJSONString(httpRequest.getTag()), e);
+            LOGGER.logError("processRequest", e, httpRequest.getTag());
         }
         return responseFuture;
     }
