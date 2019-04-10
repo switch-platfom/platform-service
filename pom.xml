@@ -46,6 +46,7 @@
 
         <quartz.version>2.3.0</quartz.version>
         <quartz.spring.version>2.1.1.RELEASE</quartz.spring.version>
+        <quartz.web.version>1.2.0</quartz.web.version>
     </properties>
 
     <dependencyManagement>
@@ -231,6 +232,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-quartz</artifactId>
                 <version>${quartz.spring.version}</version>
+            </dependency>
+
+            <!-- quartz-web -->
+            <dependency>
+                <groupId>com.github.quartzweb</groupId>
+                <artifactId>quartz-web</artifactId>
+                <version>${quartz.web.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

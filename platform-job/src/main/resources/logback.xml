@@ -9,7 +9,7 @@
     <appender name="fileLogging" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
-            <FileNamePattern>/opt/logs/platform/service/service.log.%d{yyyy-MM-dd}</FileNamePattern>
+            <FileNamePattern>/opt/logs/platform/job/job.log.%d{yyyy-MM-dd}</FileNamePattern>
             <!--日志文件保留天数-->
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
@@ -28,7 +28,7 @@
     <appender name="requestLogging" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
-            <FileNamePattern>/opt/logs/platform/service/request.log.%d{yyyy-MM-dd}</FileNamePattern>
+            <FileNamePattern>/opt/logs/platform/job/request.log.%d{yyyy-MM-dd}</FileNamePattern>
             <!--日志文件保留天数-->
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
@@ -47,7 +47,7 @@
     <appender name="errorLogging" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
-            <FileNamePattern>/opt/logs/platform/service/error.log.%d{yyyy-MM-dd}</FileNamePattern>
+            <FileNamePattern>/opt/logs/platform/job/error.log.%d{yyyy-MM-dd}</FileNamePattern>
             <!--日志文件保留天数-->
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
@@ -66,7 +66,7 @@
     <appender name="infoLogging" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
-            <FileNamePattern>/opt/logs/platform/service/info.log.%d{yyyy-MM-dd}</FileNamePattern>
+            <FileNamePattern>/opt/logs/platform/job/info.log.%d{yyyy-MM-dd}</FileNamePattern>
             <!--日志文件保留天数-->
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>

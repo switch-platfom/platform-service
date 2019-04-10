@@ -202,7 +202,7 @@
                             <resources>
                                 <resource>
                                     <!-- 指定resources插件处理哪个目录下的资源文件 -->
-                                    <directory>src/main/resources/${package.environment}</directory>
+                                    <directory>src/main/resources/config/${package.environment}</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>

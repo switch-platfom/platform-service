@@ -129,6 +129,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-quartz</artifactId>
         </dependency>
+
+        <!-- quartz-web -->
+        <dependency>
+            <groupId>com.github.quartzweb</groupId>
+            <artifactId>quartz-web</artifactId>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -209,7 +215,7 @@
                             <resources>
                                 <resource>
                                     <!-- 指定resources插件处理哪个目录下的资源文件 -->
-                                    <directory>src/main/resources/${package.environment}</directory>
+                                    <directory>src/main/resources/config/${package.environment}</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>
