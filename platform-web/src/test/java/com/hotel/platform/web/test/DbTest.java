@@ -1,6 +1,6 @@
 package com.hotel.platform.web.test;
 
-import com.hotel.platform.dao.mapper.UserInfoMapper;
+import com.hotel.platform.dao.mapper.test01db.UserInfoMapper;
 import com.hotel.platform.entity.UserInfo;
 import org.junit.Assert;
 import org.junit.Test;

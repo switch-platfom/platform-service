@@ -1,4 +1,4 @@
-package com.hotel.platform.dao.mapper;
+package com.hotel.platform.dao.mapper.test01db;
 
 import com.hotel.platform.entity.UserInfo;
 import org.apache.ibatis.annotations.Insert;

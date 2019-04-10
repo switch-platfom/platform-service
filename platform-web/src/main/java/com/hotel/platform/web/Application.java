@@ -13,10 +13,9 @@ import org.springframework.core.io.ClassPathResource;
 
 @SpringBootApplication
 @ServletComponentScan
-@MapperScan("com.hotel.platform.dao.mapper")
 @ComponentScan({
         "com.hotel.platform.common",
-        "com.hotel.platform.dao.configuration",
+        "com.hotel.platform.dao",
         "com.hotel.platform.business",
         "com.hotel.platform.web"
 })

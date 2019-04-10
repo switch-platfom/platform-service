@@ -12,7 +12,7 @@ import com.hotel.platform.contract.cota.OTACancelRS;
 import com.hotel.platform.contract.cota.OTAHotelAvailRQ;
 import com.hotel.platform.contract.cota.OTAHotelAvailRS;
 import com.hotel.platform.contract.cota.OTAHotelResRQ;
-import com.hotel.platform.dao.mapper.UserInfoMapper;
+import com.hotel.platform.dao.mapper.test01db.UserInfoMapper;
 import com.hotel.platform.web.service.HotelReservationService;
 
 /**
