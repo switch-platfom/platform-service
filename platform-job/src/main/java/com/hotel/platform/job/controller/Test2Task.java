@@ -1,7 +1,5 @@
 package com.hotel.platform.job.controller;
 
-import java.util.UUID;
-
 import org.joda.time.DateTime;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
 import com.hotel.platform.common.utils.SpringBeanContext;
-import com.hotel.platform.dao.mapper.test02db.HotelMapper;
+import com.hotel.platform.dao.mapper.test02db.TestHotelMapper;
 import com.hotel.platform.entity.Hotel;
 
 /**
@@ -26,13 +24,13 @@ public class Test2Task extends QuartzJobBean {
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
         System.out.println("task2 start....");
         try {
-            HotelMapper hotelMapper = (HotelMapper) SpringBeanContext.getBean("hotelMapper");
+            TestHotelMapper testHotelMapper = (TestHotelMapper) SpringBeanContext.getBean("testHotelMapper");
             Hotel hotel = new Hotel();
             hotel.setHotelName("hotelName");
             hotel.setUpdateTime(DateTime.now().toDate());
-            hotelMapper.insertHotel(hotel);
+            testHotelMapper.insertHotel(hotel);
             Thread.sleep(3000);
-            System.out.println(JSON.toJSONString(hotelMapper.getHotelById(hotel.getId())));
+            System.out.println(JSON.toJSONString(testHotelMapper.getHotelById(hotel.getId())));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

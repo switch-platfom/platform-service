@@ -10,29 +10,28 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-
-import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
-@Configuration
-@MapperScan(value = "com.hotel.platform.dao.mapper.test02db", sqlSessionFactoryRef = "test02dbSqlSessionFactory")
-public class Test02DatasourceConfig {
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 
-    @ConfigurationProperties(prefix = "spring.datasource.testdb02")
+@Configuration
+@MapperScan(value = "com.hotel.platform.dao.mapper.supplierdb", sqlSessionFactoryRef = "supplierDbSqlSessionFactory")
+public class SupplierDbDatasourceConfig {
+
+    @ConfigurationProperties(prefix = "spring.datasource.supplierdb")
     @Bean
-    public DataSource test02dbDataSource() {
+    public DataSource supplierDbDataSource() {
         return DruidDataSourceBuilder.create().build();
     }
 
     @Bean
-    public DataSourceTransactionManager test02dbDataSourceTransactionManager(
-            @Qualifier("test02dbDataSource") DataSource dataSource) {
+    public DataSourceTransactionManager supplierDbDataSourceTransactionManager(
+            @Qualifier("supplierDbDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
     @Bean
-    public SqlSessionFactory test02dbSqlSessionFactory(@Qualifier("test02dbDataSource") DataSource dataSource)
+    public SqlSessionFactory supplierDbSqlSessionFactory(@Qualifier("supplierDbDataSource") DataSource dataSource)
             throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
@@ -40,8 +39,8 @@ public class Test02DatasourceConfig {
     }
 
     @Bean
-    public SqlSessionTemplate test02dbSqlSessionTemplate(
-            @Qualifier("test02dbSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    public SqlSessionTemplate supplierDbSqlSessionTemplate(
+            @Qualifier("supplierDbSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 }

@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Select;
  * Created by mowei on 2019/4/11.
  */
 @Mapper
-public interface HotelMapper {
+public interface TestHotelMapper {
 
     @Insert("insert into hotel(hotelname,updatetime) values(#{hotelName},#{updateTime})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
